@@ -38,7 +38,7 @@ lazy val root = project
   .settings(
     commonSettings,
     name := "codacy-cppcheck",
-    libraryDependencies ++= Seq("com.codacy" %% "codacy-engine-scala-seed" % "4.0.0"),
+    libraryDependencies ++= Seq("com.codacy" %% "codacy-engine-scala-seed" % "5.0.1"),
     mainClass in Compile := Some("codacy.Engine"),
     graalVMNativeImageGraalVersion := Some(graalVersion),
     containerBuildImage := Some(s"oracle/graalvm-ce:$graalVersion"),

@@ -254,7 +254,12 @@ object DocGenerator {
           "Info"
         }
 
-      Json.obj("patternId" -> rule.patternId, "level" -> level, "category" -> category, "enabled" -> defaultPatterns.contains(rule.patternId))
+      Json.obj(
+        "patternId" -> rule.patternId,
+        "level" -> level,
+        "category" -> category,
+        "enabled" -> defaultPatterns.contains(rule.patternId)
+      )
 
     }
     Json.parse(Json.toJson(codacyPatterns).toString).as[JsArray]
