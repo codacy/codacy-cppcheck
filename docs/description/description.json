@@ -1980,7 +1980,7 @@
   "timeToFix" : 5
 }, {
   "patternId" : "misra-c2012-20.2",
-  "title" : "The ′, ″ or \ characters and the /* or // character sequences shall not occur in a header file name",
+  "title" : "The ', \" or \\ characters and the /* or // character sequences shall not occur in a header file name",
   "timeToFix" : 5
 }, {
   "patternId" : "misra-c2012-21.9",
