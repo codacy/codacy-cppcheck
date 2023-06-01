@@ -1,13 +1,12 @@
 package codacy.cppcheck
 
-import java.nio.file.{Files, Path, Paths}
-
 import com.codacy.plugins.api.results.Result.Issue
 import com.codacy.plugins.api.results.{Pattern, Result, Tool}
 import com.codacy.plugins.api.{Options, Source}
 import com.codacy.tools.scala.seed.utils.CommandRunner
 import play.api.libs.json._
 
+import java.nio.file.Files
 import scala.util.Try
 
 case class WarnResult(patternId: String, file: String, message: String, line: String = "1")
@@ -29,7 +28,6 @@ object CPPCheck extends Tool {
       options: Map[Options.Key, Options.Value]
   )(implicit specification: Tool.Specification): Try[List[Result]] = {
     Try {
-      val path = Paths.get(source.path)
       val filesToLint: Seq[String] = files.fold(Seq(source.path)) { paths =>
         paths.map(_.toString).toSeq
       }
@@ -74,18 +72,14 @@ object CPPCheck extends Tool {
       CommandRunner.exec(command) match {
         case Right(resultFromTool) =>
           val output = resultFromTool.stdout ++ resultFromTool.stderr
-          parseToolResult(output, path, checkPattern(configuration)).filterNot(blacklisted)
+          parseToolResult(output, checkPattern(configuration)).filterNot(blacklisted)
         case Left(failure) =>
           throw failure
       }
     }
   }
 
-  private def parseToolResult(
-      resultFromTool: List[String],
-      path: Path,
-      wasRequested: String => Boolean
-  ): List[Result] = {
+  private def parseToolResult(resultFromTool: List[String], wasRequested: String => Boolean): List[Result] = {
     for {
       outputLine <- resultFromTool
       result <- Try(Json.parse(outputLine)).toOption.flatMap(_.asOpt[WarnResult]) if wasRequested(result.patternId)
