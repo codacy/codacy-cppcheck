@@ -4,7 +4,7 @@ ARG toolVersion=2.10.3
 
 RUN \
     # runtime packages
-    apk add --no-cache bash python3 pcre z3 && \
+    apk add --no-cache bash python3 pcre z3 build-essential && \
     # compile packages
     apk add --no-cache -t .required_apks wget make g++ pcre-dev z3-dev && \
     wget --no-check-certificate -O /tmp/cppcheck.tar.gz https://github.com/danmar/cppcheck/archive/"$toolVersion".tar.gz && \
