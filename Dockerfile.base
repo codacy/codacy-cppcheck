@@ -1,6 +1,6 @@
-FROM alpine:3.18.3
+FROM alpine:3.19
 
-ARG toolVersion=2.12.0
+ARG toolVersion=2.13.0
 
 RUN \
     # runtime packages

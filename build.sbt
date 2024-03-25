@@ -24,7 +24,7 @@ lazy val `doc-generator` = project
       Seq(file)
     }.taskValue,
     libraryDependencies ++= Seq(
-      "org.scala-lang.modules" %% "scala-xml" % "2.0.1",
+      "org.scala-lang.modules" %% "scala-xml" % "2.2.0",
       "com.github.pathikrit" %% "better-files" % "3.9.2",
       "com.typesafe.play" %% "play-json" % "2.9.4"
     )
@@ -34,7 +34,7 @@ lazy val root = project
   .in(file("."))
   .settings(
     name := "codacy-cppcheck",
-    libraryDependencies ++= Seq("com.codacy" %% "codacy-engine-scala-seed" % "5.0.1"),
+    libraryDependencies ++= Seq("com.codacy" %% "codacy-engine-scala-seed" % "6.1.2"),
     mainClass in Compile := Some("codacy.Engine"),
     nativeImageOptions ++= List("-O1", "-H:+ReportExceptionStackTraces", "--no-fallback", "--no-server", "--static")
   )
