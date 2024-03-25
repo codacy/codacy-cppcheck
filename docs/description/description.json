@@ -860,8 +860,8 @@
   "timeToFix" : 5
 }, {
   "patternId" : "passedByValue",
-  "title" : "Function parameter 'parametername' should be passed by const reference.",
-  "description" : "Parameter 'parametername' is passed by value. It could be passed as a const reference which is usually faster and recommended in C++.",
+  "title" : "Function parameter '' should be passed by const reference.",
+  "description" : "Parameter '' is passed by value. It could be passed as a const reference which is usually faster and recommended in C++.",
   "timeToFix" : 5
 }, {
   "patternId" : "constParameter",
