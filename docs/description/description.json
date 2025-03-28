@@ -154,11 +154,6 @@
   "description" : "Non-boolean value returned from function returning bool",
   "timeToFix" : 5
 }, {
-  "patternId" : "boostForeachError",
-  "title" : "BOOST_FOREACH caches the end() iterator. It's undefined behavior if you modify the container inside.",
-  "description" : "BOOST_FOREACH caches the end() iterator. It's undefined behavior if you modify the container inside.",
-  "timeToFix" : 5
-}, {
   "patternId" : "arrayIndexOutOfBounds",
   "title" : "Array 'arr[16]' accessed at index 16, which is out of bounds.",
   "description" : "Array 'arr[16]' accessed at index 16, which is out of bounds.",
@@ -195,8 +190,8 @@
   "timeToFix" : 5
 }, {
   "patternId" : "objectIndex",
-  "title" : "The address of local variable '' is accessed at non-zero index.",
-  "description" : "The address of local variable '' is accessed at non-zero index.",
+  "title" : "The address of variable '' is accessed at non-zero index.",
+  "description" : "The address of variable '' is accessed at non-zero index.",
   "timeToFix" : 5
 }, {
   "patternId" : "argumentSize",
@@ -406,7 +401,7 @@
 }, {
   "patternId" : "initializerList",
   "title" : "Member variable 'class::variable' is in the wrong place in the initializer list.",
-  "description" : "Member variable 'class::variable' is in the wrong place in the initializer list. Members are initialized in the order they are declared, not in the order they are in the initializer list.  Keeping the initializer list in the same order that the members were declared prevents order dependent initialization errors.",
+  "description" : "Member variable 'class::variable' is in the wrong place in the initializer list. Members are initialized in the order they are declared, not in the order they are in the initializer list. Keeping the initializer list in the same order that the members were declared prevents order dependent initialization errors.",
   "timeToFix" : 5
 }, {
   "patternId" : "useInitializationList",
@@ -429,6 +424,21 @@
   "description" : "The class 'class' has 'operator=' but lack of 'copy constructor'.",
   "timeToFix" : 5
 }, {
+  "patternId" : "missingOverride",
+  "title" : "The function '' overrides a function in a base class but is not marked with a 'override' specifier.",
+  "description" : "The function '' overrides a function in a base class but is not marked with a 'override' specifier.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "uselessOverride",
+  "title" : "The function '' overrides a function in a base class but just delegates back to the base class.",
+  "description" : "The function '' overrides a function in a base class but just delegates back to the base class.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "returnByReference",
+  "title" : "Function 'func()' should return member 'var' by const reference.",
+  "description" : "Function 'func()' should return member 'var' by const reference.",
+  "timeToFix" : 5
+}, {
   "patternId" : "pureVirtualCall",
   "title" : "Call of pure virtual function 'f' in constructor.",
   "description" : "Call of pure virtual function 'f' in constructor. The call will fail during runtime.",
@@ -437,11 +447,6 @@
   "patternId" : "virtualCallInConstructor",
   "title" : "Virtual function 'f' is called from constructor '' at line 1. Dynamic binding is not used.",
   "description" : "Virtual function 'f' is called from constructor '' at line 1. Dynamic binding is not used.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "missingOverride",
-  "title" : "The function '' overrides a function in a base class but is not marked with a 'override' specifier.",
-  "description" : "The function '' overrides a function in a base class but is not marked with a 'override' specifier.",
   "timeToFix" : 5
 }, {
   "patternId" : "thisUseAfterFree",
@@ -774,6 +779,16 @@
   "description" : "Either the condition is redundant or there is possible null pointer dereference: pointer.",
   "timeToFix" : 5
 }, {
+  "patternId" : "nullPointerOutOfMemory",
+  "title" : "Null pointer dereference",
+  "description" : "Null pointer dereference",
+  "timeToFix" : 5
+}, {
+  "patternId" : "nullPointerOutOfResources",
+  "title" : "Null pointer dereference",
+  "description" : "Null pointer dereference",
+  "timeToFix" : 5
+}, {
   "patternId" : "nullPointerArithmetic",
   "title" : "Pointer arithmetic with NULL pointer.",
   "description" : "Pointer arithmetic with NULL pointer.",
@@ -830,8 +845,8 @@
   "timeToFix" : 5
 }, {
   "patternId" : "overlappingWriteFunction",
-  "title" : "Overlapping read/write in () is undefined behavior",
-  "description" : "Overlapping read/write in () is undefined behavior",
+  "title" : "Overlapping read/write in funcname() is undefined behavior",
+  "description" : "Overlapping read/write in funcname() is undefined behavior",
   "timeToFix" : 5
 }, {
   "patternId" : "redundantCopyLocalConst",
@@ -857,6 +872,11 @@
   "patternId" : "cstyleCast",
   "title" : "C-style pointer casting",
   "description" : "C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "suspiciousFloatingPointCast",
+  "title" : "Floating-point cast causes loss of precision.",
+  "description" : "If this cast is not intentional, remove it to avoid loss of precision",
   "timeToFix" : 5
 }, {
   "patternId" : "passedByValue",
@@ -1175,8 +1195,8 @@
   "timeToFix" : 5
 }, {
   "patternId" : "mismatchingContainerIterator",
-  "title" : "Iterator 'it' from different container 'v1' are used together.",
-  "description" : "Iterator 'it' from different container 'v1' are used together.",
+  "title" : "Iterator 'it' referring to container 'v2' is used with container 'v1'.",
+  "description" : "Iterator 'it' referring to container 'v2' is used with container 'v1'.",
   "timeToFix" : 5
 }, {
   "patternId" : "mismatchingContainers",
@@ -1292,6 +1312,16 @@
   "patternId" : "derefInvalidIterator",
   "title" : "Possible dereference of an invalid iterator: i",
   "description" : "Possible dereference of an invalid iterator: i. Make sure to check that the iterator is valid before dereferencing it - not after.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "eraseIteratorOutOfBounds",
+  "title" : "Calling function 'erase()' on the iterator 'iter' which is out of bounds.",
+  "description" : "Calling function 'erase()' on the iterator 'iter' which is out of bounds.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "eraseIteratorOutOfBoundsCond",
+  "title" : "Either the condition 'x' is redundant or function 'erase()' is called on the iterator 'iter' which is out of bounds.",
+  "description" : "Either the condition 'x' is redundant or function 'erase()' is called on the iterator 'iter' which is out of bounds.",
   "timeToFix" : 5
 }, {
   "patternId" : "useStlAlgorithm",
@@ -1435,8 +1465,8 @@
   "timeToFix" : 5
 }, {
   "patternId" : "shiftTooManyBitsSigned",
-  "title" : "Shifting signed 32-bit value by 31 bits is implementation-defined behaviour",
-  "description" : "Shifting signed 32-bit value by 31 bits is implementation-defined behaviour",
+  "title" : "Shifting signed 32-bit value by 31 bits is undefined behaviour",
+  "description" : "Shifting signed 32-bit value by 31 bits is undefined behaviour",
   "timeToFix" : 5
 }, {
   "patternId" : "integerOverflow",
@@ -1472,11 +1502,6 @@
   "patternId" : "uninitStructMember",
   "title" : "Uninitialized struct member: a.b",
   "description" : "Uninitialized struct member: a.b",
-  "timeToFix" : 5
-}, {
-  "patternId" : "unusedFunction",
-  "title" : "The function 'funcName' is never used.",
-  "description" : "The function 'funcName' is never used.",
   "timeToFix" : 5
 }, {
   "patternId" : "unusedVariable",
@@ -1534,9 +1559,44 @@
   "description" : "va_start() or va_copy() called subsequently on 'vl' without va_end() in between.",
   "timeToFix" : 5
 }, {
+  "patternId" : "unusedFunction",
+  "title" : "The function 'funcName' is never used.",
+  "description" : "The function 'funcName' is never used.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "missingInclude",
+  "title" : "Include file: \"\" not found.",
+  "description" : "Include file: \"\" not found.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "missingIncludeSystem",
+  "title" : "Include file: <> not found. Please note: Cppcheck does not need standard library headers to get proper results.",
+  "description" : "Include file: <> not found. Please note: Cppcheck does not need standard library headers to get proper results.",
+  "timeToFix" : 5
+}, {
   "patternId" : "preprocessorErrorDirective",
   "title" : "#error message",
   "description" : "#error message",
+  "timeToFix" : 5
+}, {
+  "patternId" : "invalidConstFunctionType",
+  "title" : "It is unspecified behavior to const qualify a function type.",
+  "description" : "It is unspecified behavior to const qualify a function type.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "class_X_Y",
+  "title" : "The code '   ' is not handled. You can use -I or --include to add handling of this code.",
+  "description" : "The code '   ' is not handled. You can use -I or --include to add handling of this code.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "macroWithSemicolon",
+  "title" : "Ensure that '' is defined either using -I, --include or -D.",
+  "description" : "Ensure that '' is defined either using -I, --include or -D.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "nonStandardCharLiteral",
+  "title" : "Non-standard character literal. ",
+  "description" : "Non-standard character literal. ",
   "timeToFix" : 5
 }, {
   "patternId" : "threadsafety-threadsafety",

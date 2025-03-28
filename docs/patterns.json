@@ -1,6 +1,6 @@
 {
   "name" : "cppcheck",
-  "version" : "2.13.0",
+  "version" : "2.17.1",
   "patterns" : [ {
     "patternId" : "purgedConfiguration",
     "level" : "Info",
@@ -156,11 +156,6 @@
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
-  }, {
-    "patternId" : "boostForeachError",
-    "level" : "Error",
-    "category" : "ErrorProne",
-    "enabled" : true
   }, {
     "patternId" : "arrayIndexOutOfBounds",
     "level" : "Error",
@@ -432,17 +427,27 @@
     "category" : "ErrorProne",
     "enabled" : false
   }, {
+    "patternId" : "missingOverride",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "uselessOverride",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "returnByReference",
+    "level" : "Warning",
+    "category" : "Performance",
+    "enabled" : false
+  }, {
     "patternId" : "pureVirtualCall",
     "level" : "Warning",
     "category" : "ErrorProne",
     "enabled" : false
   }, {
     "patternId" : "virtualCallInConstructor",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "missingOverride",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -777,6 +782,16 @@
     "category" : "ErrorProne",
     "enabled" : true
   }, {
+    "patternId" : "nullPointerOutOfMemory",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "nullPointerOutOfResources",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
     "patternId" : "nullPointerArithmetic",
     "level" : "Error",
     "category" : "ErrorProne",
@@ -862,6 +877,11 @@
     "category" : "CodeStyle",
     "enabled" : true
   }, {
+    "patternId" : "suspiciousFloatingPointCast",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "passedByValue",
     "level" : "Warning",
     "category" : "Performance",
@@ -938,8 +958,8 @@
     "enabled" : false
   }, {
     "patternId" : "selfAssignment",
-    "level" : "Warning",
-    "category" : "ErrorProne",
+    "level" : "Info",
+    "category" : "CodeStyle",
     "enabled" : true
   }, {
     "patternId" : "clarifyCalculation",
@@ -1297,6 +1317,16 @@
     "category" : "ErrorProne",
     "enabled" : true
   }, {
+    "patternId" : "eraseIteratorOutOfBounds",
+    "level" : "Error",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "eraseIteratorOutOfBoundsCond",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
     "patternId" : "useStlAlgorithm",
     "level" : "Info",
     "category" : "CodeStyle",
@@ -1477,11 +1507,6 @@
     "category" : "ErrorProne",
     "enabled" : true
   }, {
-    "patternId" : "unusedFunction",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
     "patternId" : "unusedVariable",
     "level" : "Info",
     "category" : "CodeStyle",
@@ -1537,10 +1562,45 @@
     "category" : "ErrorProne",
     "enabled" : true
   }, {
+    "patternId" : "unusedFunction",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "missingInclude",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : true
+  }, {
+    "patternId" : "missingIncludeSystem",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : true
+  }, {
     "patternId" : "preprocessorErrorDirective",
     "level" : "Error",
     "category" : "ErrorProne",
     "enabled" : true
+  }, {
+    "patternId" : "invalidConstFunctionType",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "class_X_Y",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "macroWithSemicolon",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "nonStandardCharLiteral",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
   }, {
     "patternId" : "threadsafety-threadsafety",
     "level" : "Warning",
