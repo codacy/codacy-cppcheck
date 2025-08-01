@@ -12,7 +12,7 @@ import scala.util.Try
 case class WarnResult(patternId: String, file: String, message: String, line: String = "1")
 
 object WarnResult {
-  implicit val warnResultFmt = Json.format[WarnResult]
+  implicit val warnResultFmt: OFormat[WarnResult] = Json.format[WarnResult]
 }
 
 object CPPCheck extends Tool {
