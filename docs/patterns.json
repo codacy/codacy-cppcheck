@@ -1,6 +1,6 @@
 {
   "name" : "cppcheck",
-  "version" : "2.17.1",
+  "version" : "2.18.0",
   "patterns" : [ {
     "patternId" : "purgedConfiguration",
     "level" : "Info",
@@ -876,6 +876,16 @@
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : true
+  }, {
+    "patternId" : "dangerousTypeCast",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "intToPointerCast",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
   }, {
     "patternId" : "suspiciousFloatingPointCast",
     "level" : "Info",

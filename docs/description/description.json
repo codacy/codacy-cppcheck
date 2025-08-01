@@ -874,6 +874,16 @@
   "description" : "C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected.",
   "timeToFix" : 5
 }, {
+  "patternId" : "dangerousTypeCast",
+  "title" : "Potentially invalid type conversion in old-style C cast, clarify/fix with C++ cast",
+  "description" : "Potentially invalid type conversion in old-style C cast, clarify/fix with C++ cast",
+  "timeToFix" : 5
+}, {
+  "patternId" : "intToPointerCast",
+  "title" : "Casting non-zero decimal integer literal to pointer.",
+  "description" : "Casting non-zero decimal integer literal to pointer.",
+  "timeToFix" : 5
+}, {
   "patternId" : "suspiciousFloatingPointCast",
   "title" : "Floating-point cast causes loss of precision.",
   "description" : "If this cast is not intentional, remove it to avoid loss of precision",
