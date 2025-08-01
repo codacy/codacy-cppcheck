@@ -1,6 +1,6 @@
 import com.typesafe.sbt.packager.docker.Cmd
 
-ThisBuild / scalaVersion := "2.13.3"
+ThisBuild / scalaVersion := "2.13.16"
 
 val cppcheckVersion: String = {
   val source = scala.io.Source.fromFile("Dockerfile.base")
@@ -24,9 +24,9 @@ lazy val `doc-generator` = project
       Seq(file)
     }.taskValue,
     libraryDependencies ++= Seq(
-      "org.scala-lang.modules" %% "scala-xml" % "2.2.0",
+      "org.scala-lang.modules" %% "scala-xml" % "2.4.0",
       "com.github.pathikrit" %% "better-files" % "3.9.2",
-      "com.typesafe.play" %% "play-json" % "2.9.4"
+      "org.playframework" %% "play-json" % "3.0.5"
     )
   )
 
@@ -34,7 +34,7 @@ lazy val root = project
   .in(file("."))
   .settings(
     name := "codacy-cppcheck",
-    libraryDependencies ++= Seq("com.codacy" %% "codacy-engine-scala-seed" % "6.1.2"),
+    libraryDependencies ++= Seq("com.codacy" %% "codacy-engine-scala-seed" % "6.1.5"),
     mainClass in Compile := Some("codacy.Engine"),
     nativeImageOptions ++= List("-O1", "-H:+ReportExceptionStackTraces", "--no-fallback", "--no-server", "--static")
   )
