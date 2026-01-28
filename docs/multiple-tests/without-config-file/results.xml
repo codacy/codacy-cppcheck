@@ -8,4 +8,9 @@
     <file name="unusedLabel.cpp">
         <error source="unusedLabel" line="8" message="Label 'Test2' is not used." severity="info" />
     </file>
+    <file name="test.cpp">
+        <error source="nullPointer" line="9" message="Null pointer dereference: ptr" severity="error" />  
+        <error source="nullPointer" line="11" message="Null pointer dereference: ptr" severity="error" />  
+        <error source="nullPointerRedundantCheck" line="16" message="Either the condition 'x==nullptr' is redundant or there is possible null pointer dereference: x." severity="warning" />
+    </file>
 </checkstyle>

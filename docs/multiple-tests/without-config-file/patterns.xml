@@ -1,5 +1,16 @@
 <module name="root">
     <module name="unreadVariable" />
-    <module name="invalidIterator1" />
     <module name="unusedLabel" />
+    <module name="invalidIterator1" />
+    <module name="nullPointer" />
+    <module name="nullPointerDefaultArg" />
+    <module name="nullPointerRedundantCheck" />
+    <module name="nullPointerOutOfMemory" />
+    <module name="nullPointerOutOfResources" />
+    <module name="nullPointerArithmetic" />
+    <module name="nullPointerArithmeticRedundantCheck" />
+    <module name="threadsafety-threadsafety" />
+    <module name="y2038-type-bits-not-64" />
+    <module name="y2038-type-bits-undef" />
+    <module name="y2038-unsafe-call" />
 </module>

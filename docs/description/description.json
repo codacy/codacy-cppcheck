@@ -1613,54 +1613,6 @@
   "title" : "Locate for threadsafety issues",
   "timeToFix" : 5
 }, {
-  "patternId" : "cert-EXP05-C",
-  "title" : "Do not attempt to cast away const",
-  "timeToFix" : 5
-}, {
-  "patternId" : "cert-EXP42-C",
-  "title" : "Do not compare padding data",
-  "timeToFix" : 5
-}, {
-  "patternId" : "cert-EXP15-C",
-  "title" : "Do not place a semicolon on the same line as an if, for or while statement",
-  "timeToFix" : 5
-}, {
-  "patternId" : "cert-EXP46-c",
-  "title" : "Do not use a bitwise operator with a Boolean-like operand",
-  "timeToFix" : 5
-}, {
-  "patternId" : "cert-INT31-c",
-  "title" : "Ensure that integer conversions do not result in lost or misinterpreted data",
-  "timeToFix" : 5
-}, {
-  "patternId" : "cert-MSC24-C",
-  "title" : "Do not use deprecated or obsolescent functions",
-  "timeToFix" : 5
-}, {
-  "patternId" : "cert-MSC30-c",
-  "title" : "Do not use the rand() function for generating pseudorandom numbers",
-  "timeToFix" : 5
-}, {
-  "patternId" : "cert-STR03-C",
-  "title" : "Do not inadvertently truncate a string",
-  "timeToFix" : 5
-}, {
-  "patternId" : "cert-STR05-C",
-  "title" : "Use pointers to const when referring to string literals",
-  "timeToFix" : 5
-}, {
-  "patternId" : "cert-STR07-C",
-  "title" : "Use the bounds-checking interfaces for string manipulation",
-  "timeToFix" : 5
-}, {
-  "patternId" : "cert-STR11-C",
-  "title" : "Do not specify the bound of a character array initialized with a string literal",
-  "timeToFix" : 5
-}, {
-  "patternId" : "cert-API01-C",
-  "title" : "Avoid laying out strings in memory directly before sensitive data",
-  "timeToFix" : 5
-}, {
   "patternId" : "y2038-type-bits-not-64",
   "title" : "_TIME_BITS must be defined equal to 64",
   "timeToFix" : 5
