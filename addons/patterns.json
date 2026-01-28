@@ -6,68 +6,6 @@
       "category" : "ErrorProne"
     },
     {
-      "patternId" : "cert-EXP05-C",
-      "level" : "Warning",
-      "category" : "ErrorProne"
-    },
-    {
-      "patternId" : "cert-EXP42-C",
-      "level" : "Warning",
-      "category" : "ErrorProne"
-    },
-    {
-      "patternId" : "cert-EXP15-C",
-      "level" : "Info",
-      "category" : "CodeStyle"
-    },
-    {
-      "patternId" : "cert-EXP46-c",
-      "level" : "Warning",
-      "category" : "CodeStyle"
-    },
-    {
-      "patternId" : "cert-INT31-c",
-      "level" : "Warning",
-      "category" : "ErrorProne"
-    },
-    {
-      "patternId" : "cert-MSC24-C",
-      "level" : "Warning",
-      "category" : "ErrorProne"
-    },
-    {
-      "patternId" : "cert-MSC30-c",
-      "level" : "Warning",
-      "category" : "ErrorProne"
-    },
-    {
-      "patternId" : "cert-STR03-C",
-      "level" : "Warning",
-      "category" : "ErrorProne"
-    },
-    {
-      "patternId" : "cert-STR05-C",
-      "level" : "Warning",
-      "category" : "ErrorProne"
-    },
-    {
-      "patternId" : "cert-STR07-C",
-      "level" : "Warning",
-      "category" : "Security",
-      "subCategory" : "InsecureModulesLibraries"
-    },
-    {
-      "patternId" : "cert-STR11-C",
-      "level" : "Warning",
-      "category" : "ErrorProne"
-    },
-    {
-      "patternId" : "cert-API01-C",
-      "level" : "Warning",
-      "category" : "Security",
-      "subCategory" : "UnexpectedBehaviour"
-    },
-    {
       "patternId" : "y2038-type-bits-not-64",
       "level" : "Error",
       "category" : "Security",

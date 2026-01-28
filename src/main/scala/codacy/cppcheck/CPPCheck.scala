@@ -54,7 +54,7 @@ object CPPCheck extends Tool {
       }
 
       val command: List[String] = List("cppcheck", "--enable=all") ++
-        addonIfNeeded("cert") ++
+        //addonIfNeeded("cert") ++
         addonIfNeeded("y2038") ++
         addonIfNeeded("threadsafety") ++
         addonIfNeeded("misra", Some("addons/misra.json")) ++
@@ -68,7 +68,6 @@ object CPPCheck extends Tool {
           """--template={"patternId":"{id}","file":"{file}","line":"{line}","message":"{message}"}"""
         ) ++
         filesToLint
-
       CommandRunner.exec(command) match {
         case Right(resultFromTool) =>
           val output = resultFromTool.stdout ++ resultFromTool.stderr
