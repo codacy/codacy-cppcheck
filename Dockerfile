@@ -2,12 +2,12 @@
 FROM codacy-cppcheck-base as dev
 
 RUN apk add openjdk17
-COPY docs /docs	
-COPY addons/misra* /workdir/addons/	
-RUN adduser --uid 2004 --disabled-password --gecos "" docker	
-COPY target/universal/stage/ /workdir/	
-RUN chmod +x /workdir/bin/codacy-cppcheck	
-USER docker	
+COPY docs /docs
+COPY addons/misra* /workdir/addons/
+RUN adduser --uid 2004 --disabled-password --gecos "" docker
+COPY target/universal/stage/ /workdir/
+RUN chmod +x /workdir/bin/codacy-cppcheck
+USER docker
 WORKDIR /workdir
 ENTRYPOINT ["bin/codacy-cppcheck"]
 
