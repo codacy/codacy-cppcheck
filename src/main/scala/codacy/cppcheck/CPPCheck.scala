@@ -63,7 +63,10 @@ object CPPCheck extends Tool {
           "--error-exitcode=0",
           "--inline-suppr",
           "--force",
-          s"-j ${Runtime.getRuntime().availableProcessors()}",
+          "-j",
+          // Keep in sync with CPU limits in codacy-tools
+          // https://github.com/codacy/codacy-tools/blob/61104fe51fd0c3fa54af76a3ec1a2ff409950320/persistence-plugins/src/main/scala/com/codacy/tools/persistenceplugins/docker/cpp/cppcheck/Cppcheck.scala#L23
+          "3",
           languageParameter,
           """--template={"patternId":"{id}","file":"{file}","line":"{line}","message":"{message}"}"""
         ) ++
