@@ -36,7 +36,9 @@ lazy val root = project
     name := "codacy-cppcheck",
     libraryDependencies ++= Seq("com.codacy" %% "codacy-engine-scala-seed" % "6.1.5"),
     mainClass in Compile := Some("codacy.Engine"),
-    nativeImageOptions ++= List("-O1", "-H:+ReportExceptionStackTraces", "--no-fallback", "--no-server", "--static")
+    nativeImageOptions ++= List("-O1", "-H:+ReportExceptionStackTraces", "--no-fallback", "--no-server", "--static"),
+    nativeImageVersion := "22.3.1",
+    nativeImageJvm := "graalvm-java17"
   )
   .enablePlugins(NativeImagePlugin)
   .enablePlugins(JavaAppPackaging)
