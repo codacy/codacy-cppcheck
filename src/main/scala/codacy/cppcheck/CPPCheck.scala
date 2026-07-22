@@ -60,6 +60,7 @@ object CPPCheck extends Tool {
         addonIfNeeded("misra", Some("addons/misra.json")) ++
         List(
           s"--cppcheck-build-dir=${tempFolder.toString}",
+          "--suppress=missingIncludeSystem",
           "--error-exitcode=0",
           "--inline-suppr",
           "--force",
