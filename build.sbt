@@ -26,7 +26,7 @@ lazy val `doc-generator` = project
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-xml" % "2.4.0",
       "com.github.pathikrit" %% "better-files" % "3.9.2",
-      "org.playframework" %% "play-json" % "3.0.5"
+      "org.playframework" %% "play-json" % "3.0.6"
     )
   )
 

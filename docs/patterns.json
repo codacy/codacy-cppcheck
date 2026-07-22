@@ -1,6 +1,6 @@
 {
   "name" : "cppcheck",
-  "version" : "2.18.0",
+  "version" : "2.21.0",
   "patterns" : [ {
     "patternId" : "purgedConfiguration",
     "level" : "Info",
@@ -212,64 +212,9 @@
     "category" : "ErrorProne",
     "enabled" : false
   }, {
-    "patternId" : "invalidFunctionArg",
-    "level" : "Error",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "invalidFunctionArgBool",
-    "level" : "Error",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "invalidFunctionArgStr",
-    "level" : "Error",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "ignoredReturnValue",
+    "patternId" : "terminateStrncpy",
     "level" : "Warning",
     "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "wrongmathcall",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "unpreciseMathCall",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : true
-  }, {
-    "patternId" : "memsetZeroBytes",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "memsetFloat",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "memsetValueOutOfRange",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "missingReturn",
-    "level" : "Error",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "returnStdMoveLocal",
-    "level" : "Warning",
-    "category" : "Performance",
-    "enabled" : false
-  }, {
-    "patternId" : "useStandardLibrary",
-    "level" : "Info",
-    "category" : "CodeStyle",
     "enabled" : false
   }, {
     "patternId" : "noConstructor",
@@ -398,8 +343,8 @@
     "enabled" : false
   }, {
     "patternId" : "functionStatic",
-    "level" : "Warning",
-    "category" : "Performance",
+    "level" : "Info",
+    "category" : "CodeStyle",
     "enabled" : false
   }, {
     "patternId" : "initializerList",
@@ -486,6 +431,11 @@
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : true
+  }, {
+    "patternId" : "overlappingInnerCondition",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
   }, {
     "patternId" : "mismatchingBitAnd",
     "level" : "Info",
@@ -582,6 +532,11 @@
     "category" : "ErrorProne",
     "enabled" : true
   }, {
+    "patternId" : "throwInEntryPoint",
+    "level" : "Error",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
     "patternId" : "unhandledExceptionSpecification",
     "level" : "Info",
     "category" : "CodeStyle",
@@ -590,6 +545,71 @@
     "patternId" : "rethrowNoCurrentException",
     "level" : "Error",
     "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "invalidFunctionArg",
+    "level" : "Error",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "invalidFunctionArgBool",
+    "level" : "Error",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "invalidFunctionArgStr",
+    "level" : "Error",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "ignoredReturnValue",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "ignoredReturnErrorCode",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "wrongmathcall",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "unpreciseMathCall",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : true
+  }, {
+    "patternId" : "memsetZeroBytes",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "memsetFloat",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "memsetValueOutOfRange",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "missingReturn",
+    "level" : "Error",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "returnStdMoveLocal",
+    "level" : "Warning",
+    "category" : "Performance",
+    "enabled" : false
+  }, {
+    "patternId" : "useStandardLibrary",
+    "level" : "Info",
+    "category" : "CodeStyle",
     "enabled" : false
   }, {
     "patternId" : "coutCerrMisusage",
@@ -621,6 +641,11 @@
     "level" : "Error",
     "category" : "ErrorProne",
     "enabled" : true
+  }, {
+    "patternId" : "fcloseInLoopCondition",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
   }, {
     "patternId" : "seekOnAppendedFile",
     "level" : "Warning",
@@ -717,31 +742,6 @@
     "category" : "ErrorProne",
     "enabled" : true
   }, {
-    "patternId" : "leakNoVarFunctionCall",
-    "level" : "Error",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "leakReturnValNotUsed",
-    "level" : "Error",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "leakUnsafeArgAlloc",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "publicAllocationError",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "unsafeClassCanLeak",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : true
-  }, {
     "patternId" : "memleak",
     "level" : "Error",
     "category" : "ErrorProne",
@@ -766,6 +766,31 @@
     "level" : "Error",
     "category" : "ErrorProne",
     "enabled" : true
+  }, {
+    "patternId" : "publicAllocationError",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "unsafeClassCanLeak",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : true
+  }, {
+    "patternId" : "leakNoVarFunctionCall",
+    "level" : "Error",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "leakReturnValNotUsed",
+    "level" : "Error",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "leakUnsafeArgAlloc",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
   }, {
     "patternId" : "nullPointer",
     "level" : "Error",
@@ -1122,12 +1147,17 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "shadowArgument",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "shadowFunction",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
   }, {
-    "patternId" : "shadowArgument",
+    "patternId" : "shadowMember",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -1162,6 +1192,11 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "redundantContinue",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "funcArgOrderDifferent",
     "level" : "Warning",
     "category" : "ErrorProne",
@@ -1171,6 +1206,76 @@
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
+  }, {
+    "patternId" : "UnionZeroInit",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "postfixOperator",
+    "level" : "Warning",
+    "category" : "Performance",
+    "enabled" : true
+  }, {
+    "patternId" : "sizeofwithsilentarraypointer",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "pointerSize",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "sizeofDivisionMemfunc",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "sizeofwithnumericparameter",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "sizeofsizeof",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "sizeofCalculation",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "sizeofFunctionCall",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "multiplySizeof",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "divideSizeof",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "sizeofVoid",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "sizeofDereferencedVoidPointer",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "arithOperationsOnVoidPointer",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
   }, {
     "patternId" : "containerOutOfBounds",
     "level" : "Error",
@@ -1187,11 +1292,6 @@
     "category" : "ErrorProne",
     "enabled" : false
   }, {
-    "patternId" : "iterators2",
-    "level" : "Error",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
     "patternId" : "iterators3",
     "level" : "Error",
     "category" : "ErrorProne",
@@ -1203,6 +1303,11 @@
     "enabled" : false
   }, {
     "patternId" : "invalidContainer",
+    "level" : "Error",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "invalidContainerReference",
     "level" : "Error",
     "category" : "ErrorProne",
     "enabled" : false
@@ -1277,6 +1382,26 @@
     "category" : "Performance",
     "enabled" : true
   }, {
+    "patternId" : "stlcstrConstructor",
+    "level" : "Warning",
+    "category" : "Performance",
+    "enabled" : false
+  }, {
+    "patternId" : "stlcstrAssignment",
+    "level" : "Warning",
+    "category" : "Performance",
+    "enabled" : false
+  }, {
+    "patternId" : "stlcstrConcat",
+    "level" : "Warning",
+    "category" : "Performance",
+    "enabled" : false
+  }, {
+    "patternId" : "stlcstrStream",
+    "level" : "Warning",
+    "category" : "Performance",
+    "enabled" : false
+  }, {
     "patternId" : "stlcstrthrow",
     "level" : "Error",
     "category" : "ErrorProne",
@@ -1311,6 +1436,11 @@
     "level" : "Warning",
     "category" : "Performance",
     "enabled" : true
+  }, {
+    "patternId" : "uselessCallsConstructor",
+    "level" : "Warning",
+    "category" : "Performance",
+    "enabled" : false
   }, {
     "patternId" : "uselessCallsEmpty",
     "level" : "Warning",
@@ -1357,65 +1487,10 @@
     "category" : "ErrorProne",
     "enabled" : false
   }, {
-    "patternId" : "sizeofwithsilentarraypointer",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "pointerSize",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "sizeofDivisionMemfunc",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "sizeofwithnumericparameter",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "sizeofsizeof",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "sizeofCalculation",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "sizeofFunctionCall",
-    "level" : "Warning",
+    "patternId" : "containerOutOfBoundsIndexExpression",
+    "level" : "Error",
     "category" : "ErrorProne",
     "enabled" : false
-  }, {
-    "patternId" : "multiplySizeof",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "divideSizeof",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "sizeofVoid",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "sizeofDereferencedVoidPointer",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "arithOperationsOnVoidPointer",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
   }, {
     "patternId" : "stringLiteralWrite",
     "level" : "Error",
@@ -1542,11 +1617,6 @@
     "category" : "CodeStyle",
     "enabled" : true
   }, {
-    "patternId" : "postfixOperator",
-    "level" : "Warning",
-    "category" : "Performance",
-    "enabled" : true
-  }, {
     "patternId" : "va_start_wrongParameter",
     "level" : "Warning",
     "category" : "ErrorProne",
@@ -1577,6 +1647,11 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "staticFunction",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "missingInclude",
     "level" : "Info",
     "category" : "CodeStyle",
@@ -1592,17 +1667,42 @@
     "category" : "ErrorProne",
     "enabled" : true
   }, {
+    "patternId" : "syntaxError",
+    "level" : "Error",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "unhandledChar",
+    "level" : "Error",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "includeNestedTooDeeply",
+    "level" : "Error",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "missingFile",
+    "level" : "Error",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "missingIncludeExplicit",
+    "level" : "Error",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "invalidSuppression",
+    "level" : "Error",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
     "patternId" : "invalidConstFunctionType",
     "level" : "Warning",
     "category" : "ErrorProne",
     "enabled" : false
   }, {
     "patternId" : "class_X_Y",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "macroWithSemicolon",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false

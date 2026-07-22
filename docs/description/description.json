@@ -5,8 +5,8 @@
   "timeToFix" : 5
 }, {
   "patternId" : "toomanyconfigs",
-  "title" : "Too many #ifdef configurations - cppcheck only checks 12 configurations. Use --force to check all configurations. For more details, use --enable=information.",
-  "description" : "The checking of the file will be interrupted because there are too many #ifdef configurations. Checking of all #ifdef configurations can be forced by --force command line option or from GUI preferences. However that may increase the checking time. For more details, use --enable=information.",
+  "title" : "Too many #ifdef configurations - cppcheck only checks 12 of 0 configurations. Use --force to check all configurations.",
+  "description" : "Too many #ifdef configurations - cppcheck only checks 12 of 0 configurations. Use --force to check all configurations.",
   "timeToFix" : 5
 }, {
   "patternId" : "AssignmentAddressToInteger",
@@ -26,7 +26,7 @@
 }, {
   "patternId" : "CastAddressToIntegerAtReturn",
   "title" : "Returning an address value in a function with integer return type is not portable.",
-  "description" : "Returning an address value in a function with integer (int/long/etc) return type is not portable across different platforms and compilers. For example in 32-bit Windows and Linux they are same width, but in 64-bit Windows and Linux they are of different width. In worst case you end up casting 64-bit address down to 32-bit integer. The safe way is to always return an integer.",
+  "description" : "Returning an address value in a function with integer (int/long/etc) return type is not portable across different platforms and compilers. For example in 32-bit Windows and Linux they are same width, but in 64-bit Windows and Linux they are of different width. In worst case you end up casting 64-bit address down to 32-bit integer. The safe way is to return a type such as intptr_t.",
   "timeToFix" : 5
 }, {
   "patternId" : "assertWithSideEffect",
@@ -209,64 +209,9 @@
   "description" : "Declaration of array '' with negative size is undefined behaviour",
   "timeToFix" : 5
 }, {
-  "patternId" : "invalidFunctionArg",
-  "title" : "Invalid func_name() argument nr 1. The value is 0 or 1 (boolean) but the valid values are '1:4'.",
-  "description" : "Invalid func_name() argument nr 1. The value is 0 or 1 (boolean) but the valid values are '1:4'.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "invalidFunctionArgBool",
-  "title" : "Invalid func_name() argument nr 1. A non-boolean value is required.",
-  "description" : "Invalid func_name() argument nr 1. A non-boolean value is required.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "invalidFunctionArgStr",
-  "title" : "Invalid func_name() argument nr 1. A nul-terminated string is required.",
-  "description" : "Invalid func_name() argument nr 1. A nul-terminated string is required.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "ignoredReturnValue",
-  "title" : "Return value of function malloc() is not used.",
-  "description" : "Return value of function malloc() is not used.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "wrongmathcall",
-  "title" : "Passing value '#' to #() leads to implementation-defined result.",
-  "description" : "Passing value '#' to #() leads to implementation-defined result.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "unpreciseMathCall",
-  "title" : "Expression '1 - erf(x)' can be replaced by 'erfc(x)' to avoid loss of precision.",
-  "description" : "Expression '1 - erf(x)' can be replaced by 'erfc(x)' to avoid loss of precision.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "memsetZeroBytes",
-  "title" : "memset() called to fill 0 bytes.",
-  "description" : "memset() called to fill 0 bytes. The second and third arguments might be inverted. The function memset ( void * ptr, int value, size_t num ) sets the first num bytes of the block of memory pointed by ptr to the specified value.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "memsetFloat",
-  "title" : "The 2nd memset() argument 'varname' is a float, its representation is implementation defined.",
-  "description" : "The 2nd memset() argument 'varname' is a float, its representation is implementation defined. memset() is used to set each byte of a block of memory to a specific value and the actual representation of a floating-point value is implementation defined.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "memsetValueOutOfRange",
-  "title" : "The 2nd memset() argument 'varname' doesn't fit into an 'unsigned char'.",
-  "description" : "The 2nd memset() argument 'varname' doesn't fit into an 'unsigned char'. The 2nd parameter is passed as an 'int', but the function fills the block of memory using the 'unsigned char' conversion of this value.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "missingReturn",
-  "title" : "Found an exit path from function with non-void return type that has missing return statement",
-  "description" : "Found an exit path from function with non-void return type that has missing return statement",
-  "timeToFix" : 5
-}, {
-  "patternId" : "returnStdMoveLocal",
-  "title" : "Using std::move for returning object by-value from function will affect copy elision optimization. More: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rf-return-move-local",
-  "description" : "Using std::move for returning object by-value from function will affect copy elision optimization. More: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rf-return-move-local",
-  "timeToFix" : 5
-}, {
-  "patternId" : "useStandardLibrary",
-  "title" : "Consider using memcpy instead of loop.",
-  "description" : "Consider using memcpy instead of loop.",
+  "patternId" : "terminateStrncpy",
+  "title" : "The buffer 'var_name' may not be null-terminated after the call to strncpy().",
+  "description" : "The buffer 'var_name' may not be null-terminated after the call to strncpy(). If the source string's size fits or exceeds the given size, strncpy() does not add a zero at the end of the buffer. This causes bugs later in the code if the code assumes buffer is null-terminated.",
   "timeToFix" : 5
 }, {
   "patternId" : "noConstructor",
@@ -285,18 +230,18 @@
   "timeToFix" : 5
 }, {
   "patternId" : "noCopyConstructor",
-  "title" : "Class 'class' does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s).",
-  "description" : "Class 'class' does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s).",
+  "title" : "Class 'class' does not have a copy constructor which is recommended since it has dynamic memory/resource management.",
+  "description" : "Class 'class' does not have a copy constructor which is recommended since it has dynamic memory/resource management.",
   "timeToFix" : 5
 }, {
   "patternId" : "noOperatorEq",
-  "title" : "Class 'class' does not have a operator= which is recommended since it has dynamic memory/resource allocation(s).",
-  "description" : "Class 'class' does not have a operator= which is recommended since it has dynamic memory/resource allocation(s).",
+  "title" : "Class 'class' does not have a operator= which is recommended since it has dynamic memory/resource management.",
+  "description" : "Class 'class' does not have a operator= which is recommended since it has dynamic memory/resource management.",
   "timeToFix" : 5
 }, {
   "patternId" : "noDestructor",
-  "title" : "Class 'class' does not have a destructor which is recommended since it has dynamic memory/resource allocation(s).",
-  "description" : "Class 'class' does not have a destructor which is recommended since it has dynamic memory/resource allocation(s).",
+  "title" : "Class 'class' does not have a destructor which is recommended since it has dynamic memory/resource management.",
+  "description" : "Class 'class' does not have a destructor which is recommended since it has dynamic memory/resource management.",
   "timeToFix" : 5
 }, {
   "patternId" : "uninitMemberVar",
@@ -395,8 +340,8 @@
   "timeToFix" : 5
 }, {
   "patternId" : "functionStatic",
-  "title" : "Technically the member function 'class::function' can be static (but you may consider moving to unnamed namespace).",
-  "description" : "The member function 'class::function' can be made a static function. Making a function static can bring a performance benefit since no 'this' instance is passed to the function. This change should not cause compiler errors but it does not necessarily make sense conceptually. Think about your design and the task of the function first - is it a function that must not access members of class instances? And maybe it is more appropriate to move this function to an unnamed namespace.",
+  "title" : "The member function 'class::function' can be static.",
+  "description" : "The member function 'class::function' can be static.",
   "timeToFix" : 5
 }, {
   "patternId" : "initializerList",
@@ -482,6 +427,11 @@
   "patternId" : "multiCondition",
   "title" : "Expression is always false because 'else if' condition matches previous condition at line 1.",
   "description" : "Expression is always false because 'else if' condition matches previous condition at line 1.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "overlappingInnerCondition",
+  "title" : "Overlapping inner 'if' condition is always true.",
+  "description" : "Overlapping inner 'if' condition is always true (outer condition is 'x' and inner condition is 'x').",
   "timeToFix" : 5
 }, {
   "patternId" : "mismatchingBitAnd",
@@ -575,8 +525,13 @@
   "timeToFix" : 5
 }, {
   "patternId" : "throwInNoexceptFunction",
-  "title" : "Exception thrown in function declared not to throw exceptions.",
-  "description" : "Exception thrown in function declared not to throw exceptions.",
+  "title" : "Unhandled exception thrown in function declared not to throw exceptions.",
+  "description" : "Unhandled exception thrown in function declared not to throw exceptions.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "throwInEntryPoint",
+  "title" : "Unhandled exception thrown in function that is an entry point.",
+  "description" : "Unhandled exception thrown in function that is an entry point.",
   "timeToFix" : 5
 }, {
   "patternId" : "unhandledExceptionSpecification",
@@ -587,6 +542,71 @@
   "patternId" : "rethrowNoCurrentException",
   "title" : "Rethrowing current exception with 'throw;', it seems there is no current exception to rethrow. If there is no current exception this calls std::terminate(). More: https://isocpp.org/wiki/faq/exceptions#throw-without-an-object",
   "description" : "Rethrowing current exception with 'throw;', it seems there is no current exception to rethrow. If there is no current exception this calls std::terminate(). More: https://isocpp.org/wiki/faq/exceptions#throw-without-an-object",
+  "timeToFix" : 5
+}, {
+  "patternId" : "invalidFunctionArg",
+  "title" : "Invalid func_name() argument nr 1. The value is 0 or 1 (boolean) but the valid values are '1:4'.",
+  "description" : "Invalid func_name() argument nr 1. The value is 0 or 1 (boolean) but the valid values are '1:4'.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "invalidFunctionArgBool",
+  "title" : "Invalid func_name() argument nr 1. A non-boolean value is required.",
+  "description" : "Invalid func_name() argument nr 1. A non-boolean value is required.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "invalidFunctionArgStr",
+  "title" : "Invalid func_name() argument nr 1. A nul-terminated string is required.",
+  "description" : "Invalid func_name() argument nr 1. A nul-terminated string is required.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "ignoredReturnValue",
+  "title" : "Return value of function malloc() is not used.",
+  "description" : "Return value of function malloc() is not used.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "ignoredReturnErrorCode",
+  "title" : "Error code from the return value of function func_name() is not used.",
+  "description" : "Error code from the return value of function func_name() is not used.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "wrongmathcall",
+  "title" : "Passing value '#' to #() leads to implementation-defined result.",
+  "description" : "Passing value '#' to #() leads to implementation-defined result.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "unpreciseMathCall",
+  "title" : "Expression '1 - erf(x)' can be replaced by 'erfc(x)' to avoid loss of precision.",
+  "description" : "Expression '1 - erf(x)' can be replaced by 'erfc(x)' to avoid loss of precision.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "memsetZeroBytes",
+  "title" : "memset() called to fill 0 bytes.",
+  "description" : "memset() called to fill 0 bytes. The second and third arguments might be inverted. The function memset ( void * ptr, int value, size_t num ) sets the first num bytes of the block of memory pointed by ptr to the specified value.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "memsetFloat",
+  "title" : "The 2nd memset() argument 'varname' is a float, its representation is implementation defined.",
+  "description" : "The 2nd memset() argument 'varname' is a float, its representation is implementation defined. memset() is used to set each byte of a block of memory to a specific value and the actual representation of a floating-point value is implementation defined.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "memsetValueOutOfRange",
+  "title" : "The 2nd memset() argument 'varname' doesn't fit into an 'unsigned char'.",
+  "description" : "The 2nd memset() argument 'varname' doesn't fit into an 'unsigned char'. The 2nd parameter is passed as an 'int', but the function fills the block of memory using the 'unsigned char' conversion of this value.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "missingReturn",
+  "title" : "Found an exit path from function with non-void return type that has missing return statement",
+  "description" : "Found an exit path from function with non-void return type that has missing return statement",
+  "timeToFix" : 5
+}, {
+  "patternId" : "returnStdMoveLocal",
+  "title" : "Using std::move for returning object by-value from function will affect copy elision optimization. More: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rf-return-move-local",
+  "description" : "Using std::move for returning object by-value from function will affect copy elision optimization. More: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rf-return-move-local",
+  "timeToFix" : 5
+}, {
+  "patternId" : "useStandardLibrary",
+  "title" : "Consider using memcpy instead of loop.",
+  "description" : "Consider using memcpy instead of loop.",
   "timeToFix" : 5
 }, {
   "patternId" : "coutCerrMisusage",
@@ -617,6 +637,11 @@
   "patternId" : "useClosedFile",
   "title" : "Used file that is not opened.",
   "description" : "Used file that is not opened.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "fcloseInLoopCondition",
+  "title" : "fclose() used as loop condition may skip loop body or double-close file handle.",
+  "description" : "fclose() closes 'fp' each time it is evaluated. On success the loop body might never execute, on failure fclose() might be called again on the already-closed file handle.",
   "timeToFix" : 5
 }, {
   "patternId" : "seekOnAppendedFile",
@@ -714,31 +739,6 @@
   "description" : "Memory pointed to by 'varname' is freed twice.",
   "timeToFix" : 5
 }, {
-  "patternId" : "leakNoVarFunctionCall",
-  "title" : "Allocation with funcName, funcName doesn't release it.",
-  "description" : "Allocation with funcName, funcName doesn't release it.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "leakReturnValNotUsed",
-  "title" : "Return value of allocation function 'funcName' is not stored.",
-  "description" : "Return value of allocation function 'funcName' is not stored.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "leakUnsafeArgAlloc",
-  "title" : "Unsafe allocation. If funcName() throws, memory could be leaked. Use make_shared<int>() instead.",
-  "description" : "Unsafe allocation. If funcName() throws, memory could be leaked. Use make_shared<int>() instead.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "publicAllocationError",
-  "title" : "Possible leak in public function. The pointer 'varname' is not deallocated before it is allocated.",
-  "description" : "Possible leak in public function. The pointer 'varname' is not deallocated before it is allocated.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "unsafeClassCanLeak",
-  "title" : "Class 'class' is unsafe, 'class::varname' can leak by wrong usage.",
-  "description" : "The class 'class' is unsafe, wrong usage can cause memory/resource leaks for 'class::varname'. This can for instance be fixed by adding proper cleanup in the destructor.",
-  "timeToFix" : 5
-}, {
   "patternId" : "memleak",
   "title" : "Memory leak: varname",
   "description" : "Memory leak: varname",
@@ -762,6 +762,31 @@
   "patternId" : "memleakOnRealloc",
   "title" : "Common realloc mistake: 'varname' nulled but not freed upon failure",
   "description" : "Common realloc mistake: 'varname' nulled but not freed upon failure",
+  "timeToFix" : 5
+}, {
+  "patternId" : "publicAllocationError",
+  "title" : "Possible leak in public function. The pointer 'varname' is not deallocated before it is allocated.",
+  "description" : "Possible leak in public function. The pointer 'varname' is not deallocated before it is allocated.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "unsafeClassCanLeak",
+  "title" : "Class 'class' is unsafe, 'class::varname' can leak by wrong usage.",
+  "description" : "The class 'class' is unsafe, wrong usage can cause memory/resource leaks for 'class::varname'. This can for instance be fixed by adding proper cleanup in the destructor.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "leakNoVarFunctionCall",
+  "title" : "Allocation with funcName, funcName doesn't release it.",
+  "description" : "Allocation with funcName, funcName doesn't release it.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "leakReturnValNotUsed",
+  "title" : "Return value of allocation function 'funcName' is not stored.",
+  "description" : "Return value of allocation function 'funcName' is not stored.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "leakUnsafeArgAlloc",
+  "title" : "Unsafe allocation. If funcName() throws, memory could be leaked. Use make_shared<int>() instead.",
+  "description" : "Unsafe allocation. If funcName() throws, memory could be leaked. Use make_shared<int>() instead.",
   "timeToFix" : 5
 }, {
   "patternId" : "nullPointer",
@@ -1061,7 +1086,7 @@
 }, {
   "patternId" : "commaSeparatedReturn",
   "title" : "Comma is used in return statement. The comma can easily be misread as a ';'.",
-  "description" : "Comma is used in return statement. When comma is used in a return statement it can easily be misread as a semicolon. For example in the code below the value of 'b' is returned if the condition is true, but it is easy to think that 'a+1' is returned:\\012    if (x)\\012        return a + 1,\\012    b++;\\012However it can be useful to use comma in macros. Cppcheck does not warn when such a macro is then used in a return statement, it is less likely such code is misunderstood.",
+  "description" : "Comma is used in return statement. When comma is used in a return statement it can easily be misread as a semicolon. For example in the code below the value of 'b' is returned if the condition is true, but it is easy to think that 'a+1' is returned:\\012    if (x)\\012        return a + 1,\\012    b++;\\012However it can be useful to use comma in macros. No warning is reported when such a macro is then used in a return statement, it is less likely such code is misunderstood.",
   "timeToFix" : 5
 }, {
   "patternId" : "redundantPointerOp",
@@ -1105,8 +1130,8 @@
   "timeToFix" : 5
 }, {
   "patternId" : "funcArgNamesDifferent",
-  "title" : "Function 'function' argument 2 names different: declaration 'A' definition 'B'.",
-  "description" : "Function 'function' argument 2 names different: declaration 'A' definition 'B'.",
+  "title" : "Function 'function' argument 2 names different: declaration '<unnamed>' definition '<unnamed>'.",
+  "description" : "Function 'function' argument 2 names different: declaration '<unnamed>' definition '<unnamed>'.",
   "timeToFix" : 5
 }, {
   "patternId" : "redundantBitwiseOperationInSwitch",
@@ -1115,18 +1140,23 @@
   "timeToFix" : 5
 }, {
   "patternId" : "shadowVariable",
-  "title" : "Local variable 'variable' shadows outer variable",
-  "description" : "Local variable 'variable' shadows outer variable",
-  "timeToFix" : 5
-}, {
-  "patternId" : "shadowFunction",
-  "title" : "Local variable 'function' shadows outer function",
-  "description" : "Local variable 'function' shadows outer function",
+  "title" : "Local variable 'local variable' shadows outer variable",
+  "description" : "Local variable 'local variable' shadows outer variable",
   "timeToFix" : 5
 }, {
   "patternId" : "shadowArgument",
-  "title" : "Local variable 'argument' shadows outer argument",
-  "description" : "Local variable 'argument' shadows outer argument",
+  "title" : "Local variable 'local variable' shadows outer argument",
+  "description" : "Local variable 'local variable' shadows outer argument",
+  "timeToFix" : 5
+}, {
+  "patternId" : "shadowFunction",
+  "title" : "Local variable 'local variable' shadows outer function",
+  "description" : "Local variable 'local variable' shadows outer function",
+  "timeToFix" : 5
+}, {
+  "patternId" : "shadowMember",
+  "title" : "Local variable 'local variable' shadows outer member",
+  "description" : "Local variable 'local variable' shadows outer member",
   "timeToFix" : 5
 }, {
   "patternId" : "knownArgument",
@@ -1159,6 +1189,11 @@
   "description" : "Redundant initialization for 'var'. The initialized value is overwritten before it is read.",
   "timeToFix" : 5
 }, {
+  "patternId" : "redundantContinue",
+  "title" : "'continue' is redundant since it is the last statement in a loop.",
+  "description" : "'continue' is redundant since it is the last statement in a loop.",
+  "timeToFix" : 5
+}, {
   "patternId" : "funcArgOrderDifferent",
   "title" : "Function 'function' argument order different: declaration '' definition ''",
   "description" : "Function 'function' argument order different: declaration '' definition ''",
@@ -1167,6 +1202,76 @@
   "patternId" : "moduloofone",
   "title" : "Modulo of one is always equal to zero",
   "description" : "Modulo of one is always equal to zero",
+  "timeToFix" : 5
+}, {
+  "patternId" : "UnionZeroInit",
+  "title" : "Zero initializing union '' does not guarantee its complete storage to be zero initialized as its largest member is not declared as the first member. Consider making  the first member or favor memset().",
+  "description" : "Zero initializing union '' does not guarantee its complete storage to be zero initialized as its largest member is not declared as the first member. Consider making  the first member or favor memset().",
+  "timeToFix" : 5
+}, {
+  "patternId" : "postfixOperator",
+  "title" : "Prefer prefix ++/-- operators for non-primitive types.",
+  "description" : "Prefix ++/-- operators should be preferred for non-primitive types. Pre-increment/decrement can be more efficient than post-increment/decrement. Post-increment/decrement usually involves keeping a copy of the previous value around and adds a little extra code.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "sizeofwithsilentarraypointer",
+  "title" : "Using 'sizeof' on array given as function argument returns size of a pointer.",
+  "description" : "Using 'sizeof' for array given as function argument returns the size of a pointer. It does not return the size of the whole array in bytes as might be expected. For example, this code:\\012     int f(char a[100]) {\\012         return sizeof(a);\\012     }\\012returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 100 (the size of the array in bytes).",
+  "timeToFix" : 5
+}, {
+  "patternId" : "pointerSize",
+  "title" : "Size of pointer 'varname' used instead of size of its data.",
+  "description" : "Size of pointer 'varname' used instead of size of its data. This is likely to lead to a buffer overflow. You probably intend to write 'sizeof(*varname)'.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "sizeofDivisionMemfunc",
+  "title" : "Division by result of sizeof(). memset() expects a size in bytes, did you intend to multiply instead?",
+  "description" : "Division by result of sizeof(). memset() expects a size in bytes, did you intend to multiply instead?",
+  "timeToFix" : 5
+}, {
+  "patternId" : "sizeofwithnumericparameter",
+  "title" : "Suspicious usage of 'sizeof' with a numeric constant as parameter.",
+  "description" : "It is unusual to use a constant value with sizeof. For example, 'sizeof(10)' returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 10. 'sizeof('A')' and 'sizeof(char)' can return different results.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "sizeofsizeof",
+  "title" : "Calling 'sizeof' on 'sizeof'.",
+  "description" : "Calling sizeof for 'sizeof looks like a suspicious code and most likely there should be just one 'sizeof'. The current code is equivalent to 'sizeof(size_t)'",
+  "timeToFix" : 5
+}, {
+  "patternId" : "sizeofCalculation",
+  "title" : "Found calculation inside sizeof().",
+  "description" : "Found calculation inside sizeof().",
+  "timeToFix" : 5
+}, {
+  "patternId" : "sizeofFunctionCall",
+  "title" : "Found function call inside sizeof().",
+  "description" : "Found function call inside sizeof().",
+  "timeToFix" : 5
+}, {
+  "patternId" : "multiplySizeof",
+  "title" : "Multiplying sizeof() with sizeof() indicates a logic error.",
+  "description" : "Multiplying sizeof() with sizeof() indicates a logic error.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "divideSizeof",
+  "title" : "Division of result of sizeof() on pointer type.",
+  "description" : "Division of result of sizeof() on pointer type. sizeof() returns the size of the pointer, not the size of the memory area it points to.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "sizeofVoid",
+  "title" : "Behaviour of 'sizeof(void)' is not covered by the ISO C standard.",
+  "description" : "Behaviour of 'sizeof(void)' is not covered by the ISO C standard. A value for 'sizeof(void)' is defined only as part of a GNU C extension, which defines 'sizeof(void)' to be 1.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "sizeofDereferencedVoidPointer",
+  "title" : "'*varname' is of type 'void', the behaviour of 'sizeof(void)' is not covered by the ISO C standard.",
+  "description" : "'*varname' is of type 'void', the behaviour of 'sizeof(void)' is not covered by the ISO C standard. A value for 'sizeof(void)' is defined only as part of a GNU C extension, which defines 'sizeof(void)' to be 1.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "arithOperationsOnVoidPointer",
+  "title" : "'varname' is of type 'vartype'. When using void pointers in calculations, the behaviour is undefined.",
+  "description" : "'varname' is of type 'vartype'. When using void pointers in calculations, the behaviour is undefined. Arithmetic operations on 'void *' is a GNU C extension, which defines the 'sizeof(void)' to be 1.",
   "timeToFix" : 5
 }, {
   "patternId" : "containerOutOfBounds",
@@ -1184,11 +1289,6 @@
   "description" : "Same iterator is used with different containers 'container1' and 'container2'.",
   "timeToFix" : 5
 }, {
-  "patternId" : "iterators2",
-  "title" : "Same iterator is used with different containers 'container0' and 'container1'.",
-  "description" : "Same iterator is used with different containers 'container0' and 'container1'.",
-  "timeToFix" : 5
-}, {
   "patternId" : "iterators3",
   "title" : "Same iterator is used with containers 'container' that are temporaries or defined in different scopes.",
   "description" : "Same iterator is used with containers 'container' that are temporaries or defined in different scopes.",
@@ -1202,6 +1302,11 @@
   "patternId" : "invalidContainer",
   "title" : "Using object that may be invalid.",
   "description" : "Using object that may be invalid.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "invalidContainerReference",
+  "title" : "Reference to x that may be invalid.",
+  "description" : "Reference to x that may be invalid.",
   "timeToFix" : 5
 }, {
   "patternId" : "mismatchingContainerIterator",
@@ -1274,6 +1379,26 @@
   "description" : "The conversion from const char* as returned by c_str() to std::string creates an unnecessary string copy or length calculation. Solve that by directly passing the string.",
   "timeToFix" : 5
 }, {
+  "patternId" : "stlcstrConstructor",
+  "title" : "Constructing a std::string from the result of c_str() is slow and redundant.",
+  "description" : "Constructing a std::string from const char* requires a call to strlen(). Solve that by directly passing the string.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "stlcstrAssignment",
+  "title" : "Assigning the result of c_str() to a std::string is slow and redundant.",
+  "description" : "Assigning a const char* to a std::string requires a call to strlen(). Solve that by directly assigning the string.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "stlcstrConcat",
+  "title" : "Concatenating the result of c_str() and a std::string is slow and redundant.",
+  "description" : "Concatenating a const char* with a std::string requires a call to strlen(). Solve that by directly concatenating the strings.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "stlcstrStream",
+  "title" : "Passing the result of c_str() to a stream is slow and redundant.",
+  "description" : "Passing a const char* to a stream requires a call to strlen(). Solve that by directly passing the string.",
+  "timeToFix" : 5
+}, {
   "patternId" : "stlcstrthrow",
   "title" : "Dangerous usage of c_str(). The value returned by c_str() is invalid after throwing exception.",
   "description" : "Dangerous usage of c_str(). The string is destroyed after the c_str() call so the thrown pointer is invalid.",
@@ -1307,6 +1432,11 @@
   "patternId" : "uselessCallsSubstr",
   "title" : "Ineffective call of function 'substr' because it returns a copy of the object. Use operator= instead.",
   "description" : "Ineffective call of function 'substr' because it returns a copy of the object. Use operator= instead.",
+  "timeToFix" : 5
+}, {
+  "patternId" : "uselessCallsConstructor",
+  "title" : "Inefficient constructor call: container '' is assigned a partial copy of itself. Use erase() or resize() instead.",
+  "description" : "Inefficient constructor call: container '' is assigned a partial copy of itself. Use erase() or resize() instead.",
   "timeToFix" : 5
 }, {
   "patternId" : "uselessCallsEmpty",
@@ -1354,64 +1484,9 @@
   "description" : "The lock is ineffective because the mutex is locked at the same scope as the mutex itself.",
   "timeToFix" : 5
 }, {
-  "patternId" : "sizeofwithsilentarraypointer",
-  "title" : "Using 'sizeof' on array given as function argument returns size of a pointer.",
-  "description" : "Using 'sizeof' for array given as function argument returns the size of a pointer. It does not return the size of the whole array in bytes as might be expected. For example, this code:\\012     int f(char a[100]) {\\012         return sizeof(a);\\012     }\\012returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 100 (the size of the array in bytes).",
-  "timeToFix" : 5
-}, {
-  "patternId" : "pointerSize",
-  "title" : "Size of pointer 'varname' used instead of size of its data.",
-  "description" : "Size of pointer 'varname' used instead of size of its data. This is likely to lead to a buffer overflow. You probably intend to write 'sizeof(*varname)'.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "sizeofDivisionMemfunc",
-  "title" : "Division by result of sizeof(). memset() expects a size in bytes, did you intend to multiply instead?",
-  "description" : "Division by result of sizeof(). memset() expects a size in bytes, did you intend to multiply instead?",
-  "timeToFix" : 5
-}, {
-  "patternId" : "sizeofwithnumericparameter",
-  "title" : "Suspicious usage of 'sizeof' with a numeric constant as parameter.",
-  "description" : "It is unusual to use a constant value with sizeof. For example, 'sizeof(10)' returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 10. 'sizeof('A')' and 'sizeof(char)' can return different results.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "sizeofsizeof",
-  "title" : "Calling 'sizeof' on 'sizeof'.",
-  "description" : "Calling sizeof for 'sizeof looks like a suspicious code and most likely there should be just one 'sizeof'. The current code is equivalent to 'sizeof(size_t)'",
-  "timeToFix" : 5
-}, {
-  "patternId" : "sizeofCalculation",
-  "title" : "Found calculation inside sizeof().",
-  "description" : "Found calculation inside sizeof().",
-  "timeToFix" : 5
-}, {
-  "patternId" : "sizeofFunctionCall",
-  "title" : "Found function call inside sizeof().",
-  "description" : "Found function call inside sizeof().",
-  "timeToFix" : 5
-}, {
-  "patternId" : "multiplySizeof",
-  "title" : "Multiplying sizeof() with sizeof() indicates a logic error.",
-  "description" : "Multiplying sizeof() with sizeof() indicates a logic error.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "divideSizeof",
-  "title" : "Division of result of sizeof() on pointer type.",
-  "description" : "Division of result of sizeof() on pointer type. sizeof() returns the size of the pointer, not the size of the memory area it points to.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "sizeofVoid",
-  "title" : "Behaviour of 'sizeof(void)' is not covered by the ISO C standard.",
-  "description" : "Behaviour of 'sizeof(void)' is not covered by the ISO C standard. A value for 'sizeof(void)' is defined only as part of a GNU C extension, which defines 'sizeof(void)' to be 1.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "sizeofDereferencedVoidPointer",
-  "title" : "'*varname' is of type 'void', the behaviour of 'sizeof(void)' is not covered by the ISO C standard.",
-  "description" : "'*varname' is of type 'void', the behaviour of 'sizeof(void)' is not covered by the ISO C standard. A value for 'sizeof(void)' is defined only as part of a GNU C extension, which defines 'sizeof(void)' to be 1.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "arithOperationsOnVoidPointer",
-  "title" : "'varname' is of type 'vartype'. When using void pointers in calculations, the behaviour is undefined.",
-  "description" : "'varname' is of type 'vartype'. When using void pointers in calculations, the behaviour is undefined. Arithmetic operations on 'void *' is a GNU C extension, which defines the 'sizeof(void)' to be 1.",
+  "patternId" : "containerOutOfBoundsIndexExpression",
+  "title" : "Out of bounds access of var, index 'var.size()' is out of bounds.",
+  "description" : "Out of bounds access of var, index 'var.size()' is out of bounds.",
   "timeToFix" : 5
 }, {
   "patternId" : "stringLiteralWrite",
@@ -1539,11 +1614,6 @@
   "description" : "struct member 'structname::variable' is never used.",
   "timeToFix" : 5
 }, {
-  "patternId" : "postfixOperator",
-  "title" : "Prefer prefix ++/-- operators for non-primitive types.",
-  "description" : "Prefix ++/-- operators should be preferred for non-primitive types. Pre-increment/decrement can be more efficient than post-increment/decrement. Post-increment/decrement usually involves keeping a copy of the previous value around and adds a little extra code.",
-  "timeToFix" : 5
-}, {
   "patternId" : "va_start_wrongParameter",
   "title" : "'arg1' given to va_start() is not last named argument of the function. Did you intend to pass 'arg2'?",
   "description" : "'arg1' given to va_start() is not last named argument of the function. Did you intend to pass 'arg2'?",
@@ -1574,19 +1644,54 @@
   "description" : "The function 'funcName' is never used.",
   "timeToFix" : 5
 }, {
+  "patternId" : "staticFunction",
+  "title" : "The function 'funcName' should have static linkage since it is not used outside of its translation unit.",
+  "description" : "The function 'funcName' should have static linkage since it is not used outside of its translation unit.",
+  "timeToFix" : 5
+}, {
   "patternId" : "missingInclude",
   "title" : "Include file: \"\" not found.",
   "description" : "Include file: \"\" not found.",
   "timeToFix" : 5
 }, {
   "patternId" : "missingIncludeSystem",
-  "title" : "Include file: <> not found. Please note: Cppcheck does not need standard library headers to get proper results.",
-  "description" : "Include file: <> not found. Please note: Cppcheck does not need standard library headers to get proper results.",
+  "title" : "Include file: <> not found. Please note: Standard library headers do not need to be provided to get proper results.",
+  "description" : "Include file: <> not found. Please note: Standard library headers do not need to be provided to get proper results.",
   "timeToFix" : 5
 }, {
   "patternId" : "preprocessorErrorDirective",
-  "title" : "#error message",
-  "description" : "#error message",
+  "title" : "message",
+  "description" : "message",
+  "timeToFix" : 5
+}, {
+  "patternId" : "syntaxError",
+  "title" : "message",
+  "description" : "message",
+  "timeToFix" : 5
+}, {
+  "patternId" : "unhandledChar",
+  "title" : "message",
+  "description" : "message",
+  "timeToFix" : 5
+}, {
+  "patternId" : "includeNestedTooDeeply",
+  "title" : "message",
+  "description" : "message",
+  "timeToFix" : 5
+}, {
+  "patternId" : "missingFile",
+  "title" : "message",
+  "description" : "message",
+  "timeToFix" : 5
+}, {
+  "patternId" : "missingIncludeExplicit",
+  "title" : "message",
+  "description" : "message",
+  "timeToFix" : 5
+}, {
+  "patternId" : "invalidSuppression",
+  "title" : "message",
+  "description" : "message",
   "timeToFix" : 5
 }, {
   "patternId" : "invalidConstFunctionType",
@@ -1597,11 +1702,6 @@
   "patternId" : "class_X_Y",
   "title" : "The code '   ' is not handled. You can use -I or --include to add handling of this code.",
   "description" : "The code '   ' is not handled. You can use -I or --include to add handling of this code.",
-  "timeToFix" : 5
-}, {
-  "patternId" : "macroWithSemicolon",
-  "title" : "Ensure that '' is defined either using -I, --include or -D.",
-  "description" : "Ensure that '' is defined either using -I, --include or -D.",
   "timeToFix" : 5
 }, {
   "patternId" : "nonStandardCharLiteral",
