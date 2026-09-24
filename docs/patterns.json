@@ -1,6 +1,6 @@
 {
   "name" : "cppcheck",
-  "version" : "2.21.1",
+  "version" : "2.22.0",
   "patterns" : [ {
     "patternId" : "purgedConfiguration",
     "level" : "Info",
@@ -407,6 +407,11 @@
     "category" : "ErrorProne",
     "enabled" : false
   }, {
+    "patternId" : "ctuOneDefinitionRuleViolation",
+    "level" : "Error",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
     "patternId" : "assignIfError",
     "level" : "Info",
     "category" : "CodeStyle",
@@ -653,6 +658,11 @@
     "enabled" : true
   }, {
     "patternId" : "incompatibleFileOpen",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "wrongfeofUsage",
     "level" : "Warning",
     "category" : "ErrorProne",
     "enabled" : false
@@ -1047,6 +1057,11 @@
     "category" : "CodeStyle",
     "enabled" : true
   }, {
+    "patternId" : "unreachableSwitchCase",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "unsignedLessThanZero",
     "level" : "Info",
     "category" : "CodeStyle",
@@ -1178,6 +1193,11 @@
     "enabled" : false
   }, {
     "patternId" : "comparePointers",
+    "level" : "Error",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "subtractPointers",
     "level" : "Error",
     "category" : "ErrorProne",
     "enabled" : false
@@ -1467,6 +1487,11 @@
     "category" : "ErrorProne",
     "enabled" : false
   }, {
+    "patternId" : "algorithmOutOfBounds",
+    "level" : "Error",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
     "patternId" : "useStlAlgorithm",
     "level" : "Info",
     "category" : "CodeStyle",
@@ -1582,6 +1607,16 @@
     "category" : "ErrorProne",
     "enabled" : false
   }, {
+    "patternId" : "uninitvar",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "legacyUninitvar",
+    "level" : "Error",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
     "patternId" : "uninitdata",
     "level" : "Error",
     "category" : "ErrorProne",
@@ -1668,6 +1703,11 @@
     "enabled" : true
   }, {
     "patternId" : "syntaxError",
+    "level" : "Error",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "directiveAsMacroParameter",
     "level" : "Error",
     "category" : "ErrorProne",
     "enabled" : false

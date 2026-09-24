@@ -404,6 +404,11 @@
   "description" : "Unsafe class checking: The const reference member 'UnsafeClass::var' is initialized by a const reference constructor argument. You need to be careful about lifetime issues. If you pass a local variable or temporary value in this constructor argument, be extra careful. If the argument is always some global object that is never destroyed then this is safe usage. However it would be defensive to make the member 'UnsafeClass::var' a non-reference variable or a smart pointer.",
   "timeToFix" : 5
 }, {
+  "patternId" : "ctuOneDefinitionRuleViolation",
+  "title" : "The one definition rule is violated, different classes/structs have the same name 'classname'",
+  "description" : "The one definition rule is violated, different classes/structs have the same name 'classname'",
+  "timeToFix" : 5
+}, {
   "patternId" : "assignIfError",
   "title" : "Mismatching assignment and comparison, comparison '' is always false.",
   "description" : "Mismatching assignment and comparison, comparison '' is always false.",
@@ -652,6 +657,11 @@
   "patternId" : "incompatibleFileOpen",
   "title" : "The file 'tmp' is opened for read and write access at the same time on different streams",
   "description" : "The file 'tmp' is opened for read and write access at the same time on different streams",
+  "timeToFix" : 5
+}, {
+  "patternId" : "wrongfeofUsage",
+  "title" : "Using feof() as a loop condition causes the last line to be processed twice.",
+  "description" : "feof() returns true only after a read has failed due to end-of-file, so the loop body executes once more after the last successful read. Check the return value of the read function instead (e.g. fgets, fread, fscanf).",
   "timeToFix" : 5
 }, {
   "patternId" : "invalidscanf",
@@ -1044,6 +1054,11 @@
   "description" : "Statements following return, break, continue, goto or throw will never be executed.",
   "timeToFix" : 5
 }, {
+  "patternId" : "unreachableSwitchCase",
+  "title" : "Switch case 'case' can never be selected because the switch condition is known to be 0.",
+  "description" : "Switch case 'case' can never be selected because the switch condition is known to be 0.",
+  "timeToFix" : 5
+}, {
   "patternId" : "unsignedLessThanZero",
   "title" : "Checking if unsigned expression 'varname' is less than zero.",
   "description" : "The unsigned expression 'varname' will never be negative so it is either pointless or an error to check if it is.",
@@ -1177,6 +1192,11 @@
   "patternId" : "comparePointers",
   "title" : "Comparing pointers that point to different objects",
   "description" : "Comparing pointers that point to different objects",
+  "timeToFix" : 5
+}, {
+  "patternId" : "subtractPointers",
+  "title" : "Subtracting pointers that point to different objects",
+  "description" : "Subtracting pointers that point to different objects",
   "timeToFix" : 5
 }, {
   "patternId" : "redundantAssignment",
@@ -1464,6 +1484,11 @@
   "description" : "Either the condition 'x' is redundant or function 'erase()' is called on the iterator 'iter' which is out of bounds.",
   "timeToFix" : 5
 }, {
+  "patternId" : "algorithmOutOfBounds",
+  "title" : "The algorithm 'std::copy' accesses 10 elements through the iterator 'it' but only 6 elements are available.",
+  "description" : "The algorithm 'std::copy' accesses 10 elements through the iterator 'it' but only 6 elements are available.",
+  "timeToFix" : 5
+}, {
   "patternId" : "useStlAlgorithm",
   "title" : "Consider using  algorithm instead of a raw loop.",
   "description" : "Consider using  algorithm instead of a raw loop.",
@@ -1579,6 +1604,16 @@
   "description" : "Undefined behaviour: float (1e+100) to integer conversion overflow.",
   "timeToFix" : 5
 }, {
+  "patternId" : "uninitvar",
+  "title" : "Uninitialized variable: x",
+  "description" : "Uninitialized variable: x",
+  "timeToFix" : 5
+}, {
+  "patternId" : "legacyUninitvar",
+  "title" : "Uninitialized variable: varname",
+  "description" : "Uninitialized variable: varname",
+  "timeToFix" : 5
+}, {
   "patternId" : "uninitdata",
   "title" : "Memory is allocated but not initialized: varname",
   "description" : "Memory is allocated but not initialized: varname",
@@ -1665,6 +1700,11 @@
   "timeToFix" : 5
 }, {
   "patternId" : "syntaxError",
+  "title" : "message",
+  "description" : "message",
+  "timeToFix" : 5
+}, {
+  "patternId" : "directiveAsMacroParameter",
   "title" : "message",
   "description" : "message",
   "timeToFix" : 5
